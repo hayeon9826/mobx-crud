@@ -1,5 +1,4 @@
 import React from 'react';
-import GlobalStyle from './styles/global';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import List from './components/List';
@@ -14,7 +13,6 @@ import './style.css';
 const App: React.FC = () => {
   return (
     <>
-      <GlobalStyle />
       <Navbar />
       <ToastContainer position="top-right" autoClose={1000} />
       {/* routes 정의 */}

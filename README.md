@@ -1,15 +1,17 @@
 ## 프로젝트 설명
 
-- react 게시판 프로젝트 (1단계 게시판 만들기)
-- 배포 링크: https://react-crud-finda.vercel.app/
+- react 게시판 프로젝트 (2단계 게시판 만들기)
 - 온보딩 참고: https://findainc.atlassian.net/wiki/spaces/FF/pages/2121170954/OnBoarding
+- 기존 Redux를 Mobx로 변경
+- 기존 styled-components를 postcss, tailwind로 변경
 
 ## 사용 스택
 
 - TypeScript
-- babel + webpack + React
-- Redux + Redux-saga + RTK Query
-- styled-components
+- React
+- babel, webpack, eslint
+- MobX
+- postcss, tailwind CSS
 - json-server
 - cypress
 
@@ -49,50 +51,30 @@ yarn cypress
 
 - `crud_spec.js` 파일 선택 후 테스트 확인
 
-## 구현된 기능
+## 구현 기능
 
-1. Redux, Redux-Toolkit를 이용한 상태 관리
-2. json-server를 이용한 mock 데이터 세팅
-3. Redux-saga를 이용한 사이드 이펙트 관리
-4. 게시글(후기) 생성 / 수정 / 삭제 기능 작업
-5. RTK Query 적용
+1. 게시글(Post) 작성
+2. 게시글 리스트 및 상세 페이지
+3. 게시글 수정
+4. 게시글 삭제
 
 ## 주요 기능별 설명
 
 ### 1) 게시글 생성
 
-- `posts/new.tsx` 페이지의 `handleSubmit` 확인
-- 폼에 값 입력시 마다 handleChange함수 호출. setFormSlice 리듀서를 호출해서 해당 값을 store (form)에 저장
-- '작성하기' 버튼 입력 시 폼의 모든 값이 저장되어 있는지 확인 후, post/createPost 액션을 호출함
-- saga.ts에서 createPostSaga를 통해 데이터를 생성하고, store(post)에도 해당 데이터 추가함
-- 성공시, FETCH_POSTS saga를 디스패치 하고 resetFormSaga 호출해서 폼 데이터 리셋함
-- 에러가 나면 toast를 띄워서 알려줌
+- 내용이 들어갑니다.
 
-### 2) 게시글 수정
+### 2) 게시글 가져오기
 
-- `posts/edit.tsx` 페이지의 `handleSubmit` 확인
-- 폼에 값 입력시 마다 handleChange함수 호출. setFormSlice 리듀서를 호출해서 해당 값을 store (form)에 저장
-- '수정하기' 버튼 입력 시 폼의 모든 값이 저장되어 있는지 확인 후, post/updatePost 액션을 호출함
-- saga.ts에서 updatePostSaga 통해 데이터를 생성하고, store(post)에도 해당 데이터 수정함
-- 성공시, FETCH_POSTS saga를 디스패치 하고 resetFormSaga 호출해서 폼 데이터 리셋함
-- 에러가 나면 toast를 띄워서 알려줌
+- 내용이 들어갑니다.
 
-### 3) 게시글 삭제
+### 3) 게시글 수정
 
-- `posts/show.tsx`의 `handleDelete` 함수 확인
-- '삭제' 버튼 클릭 시 handleDelete 함수 호출
-- slices/post에서 deletePost 액션을 호출함
-- saga.ts에서 removePostSaga를 통해 데이터를 삭제하고, store(post)에서도 해당 데이터 제거
-- 에러가 나면 toast를 띄워서 알려줌
+- 내용이 들어갑니다.
 
-### 4) 게시글 가져오기
+### 4) 게시글 삭제
 
-- `list/index.tsx`, `posts/show.tsx` 페이지 확인
-- `list/index`의 경우, useEffect를 이용해 page mount시 FETCH_POSTS saga를 디스패치 한다.
-- saga.ts에서 getPostsSaga를 통해 모든 후기 데이터를 가져오고, store(post)에 모든 데이터 업데이트 함
-- useSelector를 이용해 store에서 posts 데이터를 가져와 화면에 보여줌
-- `posts/show`의 경우, url params로 현재 페이지의 id 값을 확인함. 그리고 rtk-query를 사용해서 데이터를 가져옴
-- lib/api.ts에 rtk-query 적용
+- 내용이 들어갑니다.
 
 ## 파일별 설명
 
@@ -338,44 +320,4 @@ yarn cypress
 
 ![react-crud-cypress](https://user-images.githubusercontent.com/38210233/168766643-09825126-e4b7-4f4a-9501-65b0f8492cf6.gif)
 
-## 개선점 / 궁금한 점
-
-### 개선점
-
-- redux (slice/post)에서 코드 정리 필요 (createSlice, createAction 둘 다 사용해도 되는지?)
-- redux useSelector를 바로 사용하고 있는데, memoization으로 최적화 해야함 [참고](https://kyounghwan01.github.io/blog/React/redux/redux-toolkit/#useselector-%E1%84%8B%E1%85%A1%E1%86%AB%E1%84%90%E1%85%B5%E1%84%91%E1%85%A2%E1%84%90%E1%85%A5%E1%86%AB)
-- redux-saga 사이드 이펙트 관련 코드 정리 필요.
-- rtk-query mutation 적용 필요
-- Cypress에서 rtk-query (post/show.tsx) 가 작동하지 않는 문제
-- api.ts 에서 axios 대신 rtk-query로 변경 필요
-- 더 구체적인 테스트 케이스 적용, redux 코드 테스트 필요
-
-### 궁금한 점
-
-- api로 데이터를 저장해도 redux store를 통해 데이터를 가져오는 것이 좋을지? 아니면 바로 rtk-query로 백엔드에서 데이터 가져오는게 더 나을지?
-- createSlice와 createAction를 하나로 합쳐서 적용이 가능한지?
-- axios를 완전히 사용하지 않고, rtk-query로 대체하는게 나을지?
-- saga에는 side Effect를 담당하는 액션들을 활용하라고 했는데 단순 fetching만 적용하는게 나을지? (현재는 수정/삭제/생성 모두 적용)
-- saga.ts에 rtk-query 적용 가능한지? (함수 안에 적용 하려고 하면 invalid hook call 에러 남)
-- json-server와 redux로 store도 같이 관리하고 있는데, 생성/삭제 시 store와 함께 db 업데이트도 같이 하는게 맞을지? 아님 둘 중 하나만 하는게 맞을지?
-- api로 생성 요청과 store에 추가 작업 action을 따로 만드는게 맞을지? 아니면 한번에 만드는게 맞을지?
-- 웹에서는 [localhost:3000](http://localhost:3000) 띄워서 해당 호스트로 요청 보내면 생성/수정/삭제가 잘 되지만, cypress에서는 network error가 뜨면서 백엔드로 요청이 안간다. 혹시 추가 설정이 필요한지? -> (해결: 크롬 껐다 키면 됨)
-
-## 참고 문서
-
-> 프로젝트를 진행하며 참고했던 문서들입니다.
-
-- [redux 게시판 만들기](https://mjn5027.tistory.com/35)
-- [React-router-dom 프로젝트 참고](https://github.com/LeeMir/react-cookie-board)
-- [redux 공식 도큐](https://redux-toolkit.js.org/tutorials/quick-start)
-- [React-router-dom 설명](https://velog.io/@swanious/React-%EB%A6%AC%EC%95%A1%ED%8A%B8-%EB%9D%BC%EC%9A%B0%ED%84%B0-%EC%A0%81%EC%9A%A9)
-- [Redux-saga 튜토리얼](https://mskims.github.io/redux-saga-in-korean/introduction/BeginnerTutorial.html)
-- [Json-server 이해하기](https://redux-advanced.vlpt.us/3/01.html)
-- [Redux-Saga 설명 영상 (FE Conference, Toss)](https://www.youtube.com/watch?v=UxpREAHZ7Ck)
-- [Redux toolkit 사내 도큐](https://findainc.atlassian.net/wiki/spaces/FF/pages/2689302595/Redux+Toolkit)
-- [Redux saga 사내 도큐](https://findainc.atlassian.net/wiki/spaces/FF/pages/2757230660/redux-saga+tutorial)
-- [Redux-Saga 공식 문서 (번역)](https://mskims.github.io/redux-saga-in-korean/)
-- [Redux toolkit + redux saga](https://blog.logrocket.com/smarter-redux-redux-toolkit/)
-- [리액트 Saga + Toolkit](https://mjn5027.tistory.com/39)
-- [rtk Query 문서](https://junsangyu.gitbook.io/rtk-query/)
-- [Redux 어떻게 써야 잘 썼다고 소문이 날까?](https://velog.io/@velopert/using-redux-in-2021#redux-toolkit%EC%9D%80-%EC%9D%B4%EC%A0%9C-%ED%95%84%EC%88%98%ED%85%9C%EC%9E%85%EB%8B%88%EB%8B%A4)
+## 회고

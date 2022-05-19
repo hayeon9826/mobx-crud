@@ -1,18 +1,4 @@
 import React, { useEffect, useRef } from 'react';
-import {
-  Container,
-  PaddingContainer,
-  Title,
-  FlexDiv,
-  FormDiv,
-  FormBox,
-  FormGroup,
-  Label,
-  Input,
-  TextArea,
-  SubmitBox,
-  SubmitButton
-} from './styles';
 import { useParams } from 'react-router';
 import dayjs from 'dayjs';
 import { useDispatch, useSelector } from 'react-redux';
@@ -86,48 +72,57 @@ const PostEdit: React.FC = () => {
   };
 
   return (
-    <div>
-      <Container>
-        <PaddingContainer>
-          <FlexDiv>
-            <Title>후기 작성</Title>
-          </FlexDiv>
-          <FormDiv>
-            <FormBox>
-              <FormGroup>
-                <Label htmlFor="label">사용자</Label>
-                <Input
-                  placeholder="사용자 이름을 입력해 주세요"
-                  ref={inputRef}
-                  id="user-input"
-                  onChange={handleChange('user')}
-                  defaultValue={post?.user}
-                />
-              </FormGroup>
-              <FormGroup>
-                <Label htmlFor="label">제목</Label>
-                <Input
-                  placeholder="제목을 입력해 주세요"
-                  defaultValue={post?.title}
-                  id="title-input"
-                  onChange={handleChange('title')}
-                />
-              </FormGroup>
-              <FormGroup>
-                <Label>내용</Label>
-                <TextArea
-                  placeholder="내용을 입력해 주세요"
-                  defaultValue={post?.body}
-                  onChange={handleChange('body')}
-                />
-              </FormGroup>
-              <SubmitBox>
-                <SubmitButton onClick={() => handleSubmit()}>수정하기</SubmitButton>
-              </SubmitBox>
-            </FormBox>
-          </FormDiv>
-        </PaddingContainer>
-      </Container>
+    <div className="min-h-[80vh] bg-slate-50">
+      <div className="pt-14 relative pl-2.5 pr-2.5 max-w-screen-xl mx-auto mt-0 mb-0">
+        <div className="flex justify-between">
+          <h2 className="lg:text-xl md:text-xl xl:text-xl text-md font-semibold">후기 작성</h2>
+        </div>
+        <div className="mt-16">
+          <div className="w-100 bg-white p-5 m-auto sm:w-[580px] md:w-[580px] lg:w-[580px]">
+            <div className="block m-auto w-100 sm:w-[480px] md:w-[480px] lg:w-[480px] px-5 py-2.5">
+              <label className="block font-bold mb-1" htmlFor="label">
+                사용자
+              </label>
+              <input
+                className="w-full h-12 border-b border-b-slate-200"
+                placeholder="사용자 이름을 입력해 주세요"
+                ref={inputRef}
+                id="user-input"
+                onChange={handleChange('user')}
+                defaultValue={post?.user}
+              />
+            </div>
+            <div className="block m-auto w-100 sm:w-[480px] md:w-[480px] lg:w-[480px] px-5 py-2.5">
+              <label className="block font-bold mb-1" htmlFor="label">
+                제목
+              </label>
+              <input
+                className="w-full h-12 border-b border-b-slate-200"
+                placeholder="제목을 입력해 주세요"
+                defaultValue={post?.title}
+                id="title-input"
+                onChange={handleChange('title')}
+              />
+            </div>
+            <div className="block m-auto w-100 sm:w-[480px] md:w-[480px] lg:w-[480px] px-5 py-2.5">
+              <label className="block font-bold mb-1">내용</label>
+              <textarea
+                className="w-full h-24 border-b border-b-slate-200"
+                placeholder="내용을 입력해 주세요"
+                defaultValue={post?.body}
+                onChange={handleChange('body')}
+              />
+            </div>
+            <div className="mt-10 text-center">
+              <button
+                className="w-100 text-sm sm:text-base md:text-base lg:text-base h-12 hover:bg-indigo-600 focus:ring-4 focus:ring-indigo-200 text-white border-indigo-500 bg-indigo-500 rounded cursor-pointer w-40"
+                onClick={() => handleSubmit()}>
+                수정하기
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

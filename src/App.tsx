@@ -1,6 +1,7 @@
 import React from 'react';
 import GlobalStyle from './styles/global';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import List from './components/List';
 import PostNew from '../src/pages/posts/new';
 import PostEdit from '../src/pages/posts/edit';
@@ -8,15 +9,13 @@ import PostShow from '../src/pages/posts/show';
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import './style.css';
 
 const App: React.FC = () => {
   return (
     <>
-      {/* 전체 style 적용 */}
       <GlobalStyle />
-      {/* 기본 navbar 컴포넌트 상시 띄우기 */}
       <Navbar />
-      {/* react-toastify 적용 */}
       <ToastContainer position="top-right" autoClose={1000} />
       {/* routes 정의 */}
       <div className="route">
@@ -27,6 +26,7 @@ const App: React.FC = () => {
           <Route path="/posts/edit/:id" element={<PostEdit />} />
         </Routes>
       </div>
+      <Footer />
     </>
   );
 };

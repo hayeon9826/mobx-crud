@@ -1,11 +1,13 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import NotFoundPage from './components/NotFound';
 import List from './components/List';
+import { TodoPage } from '../src/pages/todos/index';
 import PostNew from '../src/pages/posts/new';
 import PostEdit from '../src/pages/posts/edit';
 import PostShow from '../src/pages/posts/show';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './style.css';
@@ -18,10 +20,14 @@ const App: React.FC = () => {
       {/* routes 정의 */}
       <div className="route">
         <Routes>
+          <Route path="/todo" element={<TodoPage />} />
           <Route path="/" element={<List />} />
           <Route path="/posts/new" element={<PostNew />} />
           <Route path="/posts/:id" element={<PostShow />} />
           <Route path="/posts/edit/:id" element={<PostEdit />} />
+
+          <Route path="/404" element={<NotFoundPage />} />
+          <Route path="" element={<Navigate replace to="/404" />} />
         </Routes>
       </div>
       <Footer />

@@ -93,6 +93,7 @@ const PostNew: React.FC = () => {
               <textarea
                 className="w-full h-24 border-b border-b-slate-200"
                 placeholder="내용을 입력해 주세요"
+                id="body-input"
                 onChange={handleChange('body')}
               />
             </div>

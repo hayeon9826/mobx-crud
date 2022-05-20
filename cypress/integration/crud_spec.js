@@ -32,7 +32,7 @@ context('React CRUD', () => {
     cy.get('#user-input').type(`${user}{enter}`);
     cy.get('#title-input').type(`${title}{enter}`);
     cy.get('#body-input').type(`${body}{enter}`, { force: true });
-    cy.get('button').click();
+    cy.get('button').last().click();
     cy.wait(1000);
 
     // 리스트 첫번째 후기가 방금 생성한 후기여야 함

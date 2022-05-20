@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Disclosure, Menu, Transition } from '@headlessui/react';
+import { Disclosure } from '@headlessui/react';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
 import { toast } from 'react-toastify';
 
@@ -8,7 +8,7 @@ const navigation = [
   { name: '오토렌트·리스', href: '#', current: true },
   { name: '신용대출', href: '#', current: false },
   { name: '담보대출', href: '#', current: false },
-  { name: '계산기', href: '#', current: false }
+  { name: 'to-do', href: '/todos', current: false }
 ];
 
 function classNames(...classes: string[]) {
@@ -48,19 +48,20 @@ const Navbar: React.FC = () => {
                   <div className="hidden sm:block sm:ml-6">
                     <div className="flex space-x-4">
                       {navigation.map((item) => (
-                        <a
-                          key={item.name}
-                          href={item.href}
-                          onClick={handleAlert}
-                          className={classNames(
-                            item.current
-                              ? 'text-indigo-500 font-semibold underline'
-                              : 'text-gray-300 hover:text-indigo-500',
-                            'px-3 py-2 rounded-md text-sm font-medium'
-                          )}
-                          aria-current={item.current ? 'page' : undefined}>
-                          {item.name}
-                        </a>
+                        <Link to={item.href} key={item.name}>
+                          <span
+                            key={item.name}
+                            onClick={() => (item.href === '#' ? handleAlert() : '')}
+                            className={classNames(
+                              item.current
+                                ? 'text-indigo-500 font-semibold underline'
+                                : 'text-gray-300 hover:text-indigo-500',
+                              'px-3 py-2 rounded-md text-sm font-medium'
+                            )}
+                            aria-current={item.current ? 'page' : undefined}>
+                            {item.name}
+                          </span>
+                        </Link>
                       ))}
                     </div>
                   </div>

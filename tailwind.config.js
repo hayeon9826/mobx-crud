@@ -1,7 +1,6 @@
 module.exports = {
-  content: ['./src/**/*.{html,js}'],
-  purge: {
-    enabled: true,
+  darkMode: 'class',
+  content: {
     content: ['./src/**/*.html', './src/**/*.tsx', './src/**/*.ts']
   },
   theme: {

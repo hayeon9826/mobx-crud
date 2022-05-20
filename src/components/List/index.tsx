@@ -35,7 +35,9 @@ const List: React.FC = () => {
                     <h2 className="post-user text-lg sm:text-xl md:text-xl lg:text-xl font-bold">
                       {data.user}
                     </h2>
-                    <span className="text-gray-600 text-sm ml-2 leading-5">{data.date}</span>
+                    <span className="text-gray-600 text-sm ml-2 leading-5 post-date">
+                      {data.date}
+                    </span>
                     <Link to={`/posts/${data.id}`} className="post-show-btn">
                       <div className="absolute items-center flex text-gray-500 text-xs underline right-5 top-5">
                         더보기

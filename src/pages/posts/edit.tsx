@@ -109,6 +109,7 @@ const PostEdit: React.FC = () => {
               <textarea
                 className="w-full h-24 border-b border-b-slate-200"
                 placeholder="내용을 입력해 주세요"
+                id="body-input"
                 defaultValue={post?.body}
                 onChange={handleChange('body')}
               />

@@ -4,7 +4,6 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { StoreProvider } from './store/context';
-import { RootStore } from './store/index';
 import { RootStoreType } from './interface';
 import { store } from './store';
 

@@ -3,7 +3,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import NotFoundPage from './components/NotFound';
 import List from './components/List';
-import { TodoPage } from '../src/pages/todos/index';
+import CounterPage from './pages/counters/index';
 import PostNew from '../src/pages/posts/new';
 import PostEdit from '../src/pages/posts/edit';
 import PostShow from '../src/pages/posts/show';
@@ -20,7 +20,7 @@ const App: React.FC = () => {
       {/* routes 정의 */}
       <div className="route">
         <Routes>
-          <Route path="/todo" element={<TodoPage />} />
+          <Route path="/counters" element={<CounterPage />} />
           <Route path="/" element={<List />} />
           <Route path="/posts/new" element={<PostNew />} />
           <Route path="/posts/:id" element={<PostShow />} />

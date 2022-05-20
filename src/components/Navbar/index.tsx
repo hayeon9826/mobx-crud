@@ -8,7 +8,7 @@ const navigation = [
   { name: '오토렌트·리스', href: '#', current: true },
   { name: '신용대출', href: '#', current: false },
   { name: '담보대출', href: '#', current: false },
-  { name: 'to-do', href: '/todos', current: false }
+  { name: '카운터', href: '/counters', current: false }
 ];
 
 function classNames(...classes: string[]) {

@@ -1,21 +1,24 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Disclosure } from '@headlessui/react';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
 import { toast } from 'react-toastify';
 
-const navigation = [
-  { name: '오토렌트·리스', href: '#', current: true },
-  { name: '신용대출', href: '#', current: false },
-  { name: '담보대출', href: '#', current: false },
-  { name: '카운터', href: '/counters', current: false }
-];
+
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
 }
 
 const Navbar: React.FC = () => {
+  const location = useLocation();
+
+  const navigation = [
+    { name: '게시판', href: '/', current: location.pathname === "/" },
+    { name: 'To-do 리스트', href: '/todos', current: location.pathname === "/todos" },
+    { name: '카운터', href: '/counters', current: location.pathname === "/counters" }
+  ];
+
   const handleAlert = () => {
     toast.info('페이지 준비중입니다.', {
       autoClose: 1000

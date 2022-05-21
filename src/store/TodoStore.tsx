@@ -1,41 +1,34 @@
-import { action, autorun, computed, makeObservable, observable } from 'mobx';
+import { observable, action } from 'mobx';
 import { Todo } from 'src/interface';
+import * as API from '../lib/api';
 
-export class TodoStore {
-  todos: Todo[] = [];
-  pendingRequests = 0;
-
-  constructor() {
-    makeObservable(this, {
-      todos: observable,
-      pendingRequests: observable,
-      completedTodosCount: computed,
-      report: computed,
-      addTodo: action
-    });
-    autorun(() => console.log(this.report));
-  }
-
-  get completedTodosCount() {
-    return this.todos.filter((todo: Todo) => todo.finished === true).length;
-  }
-
-  get report() {
-    if (this.todos.length === 0) return '<none>';
-    const nextTodo = this.todos.find((todo) => todo.finished === false);
-    return (
-      `Next todo: "${nextTodo ? nextTodo.title : '<none>'}". ` +
-      `Progress: ${this.completedTodosCount}/${this.todos.length}`
-    );
-  }
-
+const TodoStore = observable({
+  // state
+  todos: [] as Todo[],
+  id: Math.random(),
+  title: '',
+  finished: false,
+  // action
   addTodo(title: string) {
-    this.todos.push({
-      id: this.todos.length + 1,
-      title: title,
-      finished: false
+    this.todos.push({ title: title, id: this.todos.length + 1, finished: false });
+    // API.createTodo({title: title, id: this.todos.length + 1, finished: false})
+  },
+  removeTodo(id: number) {
+    this.todos = this.todos.filter((todo) => todo.id !== id);
+    // API.deleteTodo(id)
+  },
+  toggle(id: number) {
+    this.todos = this.todos.map((todo) => {
+      if (todo.id === id) {
+        // API.toggleTodo({ id: id, finished: !todo.finished, title: todo.title })
+        return {
+          ...todo,
+          finished: !todo.finished
+        };
+      }
+      return todo;
     });
   }
-}
+});
 
-export const todoStore = new TodoStore();
+export default TodoStore;

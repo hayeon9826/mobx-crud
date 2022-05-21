@@ -32,25 +32,37 @@
       "title": "핀다 후기입니다.",
       "body": "여러 곳을 알아봐도 핀다에서 조회한 상품이 제일 만족스러워서 진행하였고, 결과 또한 만족스러웠습니다.\n",
       "user": "최핀다",
-      "date": "2022-05-20",
+      "date": "2022-05-21",
       "id": 11
+    },
+    {
+      "title": "t",
+      "body": "t",
+      "user": "teee",
+      "date": "2022-05-21",
+      "id": 12
     }
   ],
   "todo": [
     {
-      "id": 1,
-      "title": "Mobx 스터디",
-      "isFinished": false
-    },
-    {
+      "title": "test",
       "id": 2,
-      "title": "tailwindcss 스터디",
-      "isFinished": false
+      "finished": false
     },
     {
+      "title": "test",
       "id": 3,
-      "title": "postcss 스터디",
-      "isFinished": false
+      "finished": false
+    },
+    {
+      "title": "test",
+      "id": 4,
+      "finished": false
+    },
+    {
+      "title": "sdfsdfsdfsdfsdf",
+      "id": 5,
+      "finished": false
     }
   ]
 }

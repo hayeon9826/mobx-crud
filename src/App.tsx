@@ -4,6 +4,7 @@ import Footer from './components/Footer';
 import NotFoundPage from './components/NotFound';
 import List from './components/List';
 import CounterPage from './pages/counters/index';
+import TodoPage from './pages/todos/index';
 import PostNew from '../src/pages/posts/new';
 import PostEdit from '../src/pages/posts/edit';
 import PostShow from '../src/pages/posts/show';
@@ -21,6 +22,7 @@ const App: React.FC = () => {
       <div className="route">
         <Routes>
           <Route path="/counters" element={<CounterPage />} />
+          <Route path="/todos" element={<TodoPage />} />
           <Route path="/" element={<List />} />
           <Route path="/posts/new" element={<PostNew />} />
           <Route path="/posts/:id" element={<PostShow />} />

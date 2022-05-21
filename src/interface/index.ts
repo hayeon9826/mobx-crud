@@ -13,7 +13,12 @@ export interface Post {
 export interface Todo {
   id: number;
   title: string;
-  finished?: boolean;
+  finished: boolean;
+}
+
+export interface ToggleTodo {
+  id: number;
+  finished: boolean;
 }
 
 export interface Form {

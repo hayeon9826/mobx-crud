@@ -1,6 +1,7 @@
 import { observable } from 'mobx';
+import { NumberStoreType } from 'src/interface';
 
-const NumberStore = observable({
+const NumberStore: NumberStoreType = observable({
   // state
   num: 0,
   // action

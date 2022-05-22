@@ -14,22 +14,21 @@
   margin: 0 auto;
 }
 
-
 .checkboxField:before {
-  transition-timing-function: cubic-bezier(.075, .820, .165, 1);
-    border: 2px solid;
-    border-radius: 0;
-    background-color: white;
-    border-color: transparent;
-    box-sizing: border-box;
-    color: #38d9a9;
-    content: close-quote;
-    display: inline-block;
-    height: 12px;
-    outline: 2px solid #38d9a9;
-    transition-duration: .5s;
-    transition-property: background-color, border-color;
-    width: 12px;
+  transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+  border: 2px solid;
+  border-radius: 0;
+  background-color: white;
+  border-color: transparent;
+  box-sizing: border-box;
+  color: #38d9a9;
+  content: close-quote;
+  display: inline-block;
+  height: 12px;
+  outline: 2px solid #38d9a9;
+  transition-duration: 0.5s;
+  transition-property: background-color, border-color;
+  width: 12px;
 }
 
 .checkboxField:checked:before {

@@ -1,12 +1,12 @@
 import { AxiosResponse } from 'axios';
-import { action, flow, makeObservable, observable } from 'mobx';
-import { Todo } from 'src/interface';
+import { observable, runInAction } from 'mobx';
+import { Todo, TodoStoreType } from 'src/interface';
 import * as API from '../lib/api';
 
-const TodoStore = observable({
+const TodoStore: TodoStoreType = observable({
   // state
   todos: [] as Todo[],
-  id: Math.random(),
+  id: 0,
   title: '',
   finished: false,
   error: null as string | unknown,
@@ -15,7 +15,9 @@ const TodoStore = observable({
     try {
       const response = await API.getTodos();
       const todo = response.data;
-      this.todos = todo;
+      runInAction(() => {
+        this.todos = todo;
+      });
     } catch (e) {
       console.log(e);
     }
@@ -23,18 +25,17 @@ const TodoStore = observable({
 
   async addTodo(title: string) {
     try {
-      const response = await API.createTodo({ title: title, finished: false });
-      console.log(response);
+      await API.createTodo({ title: title, finished: false });
       this.getTodos();
     } catch (e) {
       console.log(e);
       this.error = e;
     }
   },
+
   async removeTodo(id: number) {
     try {
-      const response = await API.deleteTodo(id);
-      console.log(response);
+      await API.deleteTodo(id);
       this.getTodos();
     } catch (e) {
       console.log(e);
@@ -47,12 +48,11 @@ const TodoStore = observable({
       if (todo.id === id) {
         const toggleAsync = async () => {
           try {
-            const res = await API.toggleTodo({
+            const res: AxiosResponse = await API.toggleTodo({
               id: id,
               finished: !todo.finished,
               title: todo.title
             });
-            console.log(res);
             this.getTodos();
           } catch (e) {
             console.log(e);

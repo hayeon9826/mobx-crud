@@ -1,37 +1,55 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router';
 import dayjs from 'dayjs';
-import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { setFormSlice } from '../../slices/form';
-import { updatePost } from '../../slices/post';
-import { RootState, AppDispatch } from '../../../src/store';
-import { useGetPostQuery } from '../../../src/lib/api';
+import { BASE_URL } from '../../../src/lib/api';
 import { toast } from 'react-toastify';
-import { sagaActions } from '../../../src/sagas/sagaAction';
+import rootStore from '../../store/rootStore';
+import axios from 'axios';
 
 const PostEdit: React.FC = () => {
   // URL 인자들의 key/value(키/값) 짝들의 객체를 반환
+  const [form, setForm] = useState({
+    title: '',
+    body: '',
+    user: '',
+    date: dayjs().format('YYYY-MM-DD')
+  });
+
+  const [post, setPost] = useState({
+    id: 0,
+    user: '',
+    title: '',
+    body: '',
+    date: ''
+  });
   const params = useParams();
+  const { postStore } = rootStore();
   const inputRef = useRef() as React.MutableRefObject<HTMLInputElement>;
   const navigate = useNavigate();
-  const form = useSelector((state: RootState) => state.form);
-  const dispatch: AppDispatch = useDispatch();
 
   const handleChange =
     (prop: string) =>
     (event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
-      dispatch(setFormSlice({ ...form, [prop]: event.target.value }));
+      setForm({ ...form, [prop]: event.target.value });
     };
 
-  const { data: post } = useGetPostQuery(params?.id || '', {
-    refetchOnMountOrArgChange: true,
-    skip: !params?.id
-  });
+  useEffect(() => {
+    const fetch = async () => {
+      const res = await axios({
+        url: `${BASE_URL}/post/${params.id}`
+      });
+      await setPost(res.data);
+    };
+    if (params.id) {
+      fetch();
+    }
+    window.scrollTo(0, 0);
+  }, [params]);
 
   useEffect(() => {
     if (post?.id) {
-      dispatch(setFormSlice({ ...post }));
+      setForm({ ...post });
     }
     // scroll to top
     window.scrollTo(0, 0);
@@ -44,20 +62,12 @@ const PostEdit: React.FC = () => {
     try {
       // form validation
       if (form.user && form.title && form.body) {
-        form.id !== 0 &&
-          (await dispatch(
-            updatePost({
-              id: post?.id!,
-              post: {
-                user: form.user,
-                title: form.title,
-                body: form.body,
-                date: dayjs().format('YYYY-MM-DD')
-              }
-            })
-          ));
-        // 후기 수정 후 form 리셋
-        await dispatch({ type: sagaActions.RESET_FORM });
+        await postStore.updatePost(post?.id!!, {
+          title: form.title,
+          body: form.body,
+          user: form.user,
+          date: dayjs().format('YYYY-MM-DD')
+        });
         navigate(`/posts/${post?.id}`, { replace: true });
       } else {
         // form validation
@@ -75,7 +85,7 @@ const PostEdit: React.FC = () => {
     <div className="min-h-[80vh] bg-slate-50">
       <div className="pt-14 relative pl-2.5 pr-2.5 max-w-screen-xl mx-auto mt-0 mb-0">
         <div className="flex justify-between">
-          <h2 className="lg:text-xl md:text-xl xl:text-xl text-md font-semibold">후기 작성</h2>
+          <h2 className="lg:text-xl md:text-xl xl:text-xl text-md font-semibold">후기 수정</h2>
         </div>
         <div className="mt-16">
           <div className="w-100 bg-white p-5 m-auto sm:w-[580px] md:w-[580px] lg:w-[580px]">

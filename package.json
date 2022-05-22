@@ -25,11 +25,8 @@
     "@heroicons/react": "^1.0.6",
     "@material-ui/core": "^4.12.4",
     "@material-ui/icons": "^4.11.3",
-    "@redux-saga/types": "^1.1.0",
-    "@reduxjs/toolkit": "^1.8.1",
     "@types/json-server": "^0.14.4",
-    "@types/ramda": "^0.28.12",
-    "@types/redux-actions": "^2.6.2",
+    "add": "^2.0.6",
     "axios": "^0.27.2",
     "cross-env": "^7.0.3",
     "cypress-xpath": "^1.6.2",
@@ -44,12 +41,9 @@
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-icons": "^4.3.1",
-    "react-redux": "^8.0.1",
     "react-router-dom": "^6.3.0",
     "react-toastify": "^9.0.1",
-    "redux-actions": "^2.6.5",
-    "redux-pender": "^2.0.12",
-    "redux-saga": "^1.1.3"
+    "yarn": "^1.22.18"
   },
   "devDependencies": {
     "@babel/core": "^7.17.10",

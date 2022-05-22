@@ -40,26 +40,38 @@ export interface buttonProps {
 
 export interface PostStoreType {
   posts: Post[];
-  isLoading: boolean;
-  error: string | null;
-  load(): void;
-  getPosts(): AxiosResponse;
-  addPost(post: Post): AxiosResponse;
-  getPostsSuccess({ posts }: { posts: Post[] }): void;
-  getPostsFail({ error }: { error: string }): void;
-  addPostSuccess({ posts }: { posts: Post[] }): void;
-  addPostFail({ error }: { error: string }): void;
+  error: string | unknown;
+  id: number;
+  title: string;
+  body: string;
+  user: string;
+  date: string;
+  getPosts(): void;
+  addPost(title: string, body: string, user: string, date: string): void;
+  removePost(id: number): void;
+  updatePost(id: number, post: Post): void;
 }
 
 export interface TodoStoreType {
   todos: Todo[];
-  pendingRequests: number;
-  completedTodosCount: number;
-  report: string;
+  id: number;
+  title: string;
+  finished: boolean;
+  error: string | unknown;
+  getTodos(): void;
   addTodo(title: string): void;
+  removeTodo(id: number): void;
+  toggle(id: number): void;
+}
+
+export interface NumberStoreType {
+  num: number;
+  increaseAction(num: number): void;
+  decreaseAction(num: number): void;
 }
 
 export interface RootStoreType {
-  // postStore?: PostStoreType;
-  todoStore?: TodoStoreType;
+  postStore: PostStoreType;
+  todoStore: TodoStoreType;
+  numberStore: NumberStoreType;
 }

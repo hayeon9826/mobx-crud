@@ -30,49 +30,42 @@
     },
     {
       "title": "핀다 후기입니다.",
-      "body": "여러 곳을 알아봐도 핀다에서 조회한 상품이 제일 만족스러워서 진행하였고, 결과 또한 만족스러웠습니다.\n",
+      "body": "여러 곳을 알아봐도 핀다에서 조회한 상품이 제일 만족스러워서 진행하였고, 결과 또한 만족스러웠습니다.\n\n",
       "user": "최핀다",
-      "date": "2022-05-21",
+      "date": "2022-05-22",
       "id": 11
-    },
-    {
-      "title": "t",
-      "body": "t",
-      "user": "teee",
-      "date": "2022-05-21",
-      "id": 12
     }
   ],
   "todo": [
     {
-      "finished": false,
-      "title": "test",
-      "id": 2
+      "finished": true,
+      "title": "MobX 공부하기",
+      "id": 1
     },
     {
       "finished": true,
-      "title": "test",
+      "title": "postcss 공부하기",
+      "id": 2
+    },
+    {
+      "finished": false,
+      "title": "tailwind css 공부하기",
       "id": 3
     },
     {
       "finished": false,
-      "title": "test",
+      "title": "프로젝트 구현",
       "id": 4
     },
     {
-      "finished": true,
-      "title": "todo list",
+      "title": "ReadME 작성",
+      "finished": false,
       "id": 5
     },
     {
-      "finished": true,
-      "title": "dfsfdsf",
-      "id": 6
-    },
-    {
-      "title": "tes",
+      "title": "발표자료 만들기",
       "finished": false,
-      "id": 7
+      "id": 6
     }
   ]
 }

@@ -45,24 +45,34 @@
   ],
   "todo": [
     {
+      "finished": false,
       "title": "test",
-      "id": 2,
-      "finished": false
+      "id": 2
     },
     {
+      "finished": true,
       "title": "test",
-      "id": 3,
-      "finished": false
+      "id": 3
     },
     {
+      "finished": false,
       "title": "test",
-      "id": 4,
-      "finished": false
+      "id": 4
     },
     {
-      "title": "sdfsdfsdfsdfsdf",
-      "id": 5,
-      "finished": false
+      "finished": true,
+      "title": "todo list",
+      "id": 5
+    },
+    {
+      "finished": true,
+      "title": "dfsfdsf",
+      "id": 6
+    },
+    {
+      "title": "tes",
+      "finished": false,
+      "id": 7
     }
   ]
 }

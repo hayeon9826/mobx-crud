@@ -11,7 +11,7 @@ export interface Post {
 }
 
 export interface Todo {
-  id: number;
+  id?: number;
   title: string;
   finished: boolean;
 }

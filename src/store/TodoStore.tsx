@@ -1,49 +1,67 @@
-import { AxiosResponse } from 'axios';
-import { observable, runInAction } from 'mobx';
+import { makeObservable, observable, action, flow } from 'mobx';
 import { Todo, TodoStoreType } from 'src/interface';
 import * as API from '../lib/api';
+import { AxiosResponse } from 'axios';
 
-const TodoStore: TodoStoreType = observable({
-  // state
-  todos: [] as Todo[],
-  id: 0,
-  title: '',
-  finished: false,
-  error: null as string | unknown,
-  // action
-  async getTodos() {
+export class TodoStore implements TodoStoreType {
+  rootStore;
+  todos: Todo[] = [];
+  finished: boolean = false;
+  id: number = 0;
+  title: string = '';
+  error: string | unknown = '';
+
+  constructor(root: any) {
+    makeObservable(this, {
+      id: observable,
+      todos: observable,
+      finished: observable,
+      error: observable,
+      title: observable,
+      addTodo: flow,
+      removeTodo: flow,
+      toggle: flow,
+      getTodos: flow
+    });
+    this.rootStore = root;
+    this.todos = [];
+    this.title = '';
+    this.error = '';
+    this.id = 0;
+    this.finished = false;
+  }
+
+  *getTodos() {
     try {
-      const response = await API.getTodos();
+      const response: AxiosResponse = yield API.getTodos();
       const todo = response.data;
-      runInAction(() => {
-        this.todos = todo;
-      });
+      this.todos = todo;
     } catch (e) {
       console.log(e);
     }
-  },
+  }
 
-  async addTodo(title: string) {
+  *addTodo(title: string) {
     try {
-      await API.createTodo({ title: title, finished: false });
+      yield API.createTodo({ title: title, finished: false });
       this.getTodos();
     } catch (e) {
       console.log(e);
       this.error = e;
     }
-  },
+  }
 
-  async removeTodo(id: number) {
+  *removeTodo(id: number) {
     try {
-      await API.deleteTodo(id);
+      yield API.deleteTodo(id);
       this.getTodos();
     } catch (e) {
       console.log(e);
       this.error = e;
     }
-  },
+  }
 
-  toggle(id: number) {
+  *toggle(id: number) {
     this.todos = this.todos.map((todo) => {
       if (todo.id === id) {
         const toggleAsync = async () => {
@@ -64,6 +82,4 @@ const TodoStore: TodoStoreType = observable({
       return todo;
     });
   }
-});
-
-export default TodoStore;
+}

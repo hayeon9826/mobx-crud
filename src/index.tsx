@@ -4,14 +4,14 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { RootStoreType } from './interface';
 import { RootProvider } from './store/rootContext';
-import rootStore from './store/rootStore';
+import { RootStore } from './store/rootStore';
 
 const container = document.getElementById('app') as HTMLElement;
 const root = createRoot(container);
-const RootStore: RootStoreType = rootStore();
+const store: RootStoreType = new RootStore();
 
 root.render(
-  <RootProvider value={RootStore}>
+  <RootProvider value={store}>
     <BrowserRouter>
       <App />
     </BrowserRouter>

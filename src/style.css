@@ -1,6 +1,6 @@
 @tailwind base;
-@tailwind components;
 @tailwind utilities;
+@tailwind components;
 
 * {
   margin: 0;
@@ -34,4 +34,88 @@
 .checkboxField:checked:before {
   background-color: #38d9a9;
   border-color: white;
+}
+
+.screen_bg {
+  @apply min-h-screen bg-slate-50 pb-32;
+}
+
+.screen_padding {
+  @apply pt-14 relative pl-2.5 pr-2.5 max-w-screen-xl mx-auto mt-0 mb-0;
+}
+
+.flex_div {
+  @apply flex justify-between;
+}
+
+.page_title {
+  @apply lg:text-xl md:text-xl xl:text-xl font-semibold text-base;
+}
+
+.no_content {
+  @apply text-gray-600 text-sm m-auto;
+}
+
+.main_btn {
+  @apply text-white bg-indigo-500 hover:bg-indigo-600 focus:ring-4 focus:ring-indigo-200 font-medium rounded-md text-base px-8 py-2 mr-2 focus:outline-none;
+}
+
+.grid_div {
+  @apply grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 mt-16 gap-4;
+}
+
+.decrease_btn {
+  @apply text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2;
+}
+
+.increase_btn {
+  @apply text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2;
+}
+
+.form_group {
+  @apply block m-auto sm:w-[480px] md:w-[480px] lg:w-[480px] px-5 py-2.5;
+}
+
+.submit_btn {
+  @apply text-sm sm:text-base md:text-base lg:text-base h-12 hover:bg-indigo-600 focus:ring-4 focus:ring-indigo-200 text-white border-indigo-500 bg-indigo-500 rounded cursor-pointer w-40;
+}
+
+.form_div {
+  @apply bg-white p-5 m-auto sm:w-[580px] md:w-[580px] lg:w-[580px];
+}
+
+.screen_md {
+  @apply min-h-[80vh] bg-slate-50;
+}
+
+.post_show_box {
+  @apply h-full cursor-pointer bg-white rounded-lg relative flex p-6 items-start flex-col sm:w-[580px] md:w-[580px] lg:w-[580px] min-h-[400px] shadow-md m-auto;
+}
+
+.user_text {
+  @apply text-lg sm:text-xl md:text-xl lg:text-xl font-bold;
+}
+
+.date_text {
+  @apply text-gray-600 text-sm ml-2 leading-5;
+}
+
+.todo_add_btn {
+  @apply inline-flex items-center py-2.5 px-3 ml-2 text-sm font-medium text-white bg-indigo-500 rounded-lg border border-indigo-500 hover:bg-indigo-700 focus:ring-4 focus:outline-none focus:ring-indigo-300;
+}
+
+.todo_remove_btn {
+  @apply text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2;
+}
+
+.todo_form_input {
+  @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-2 p-2.5;
+}
+
+.todo_div {
+  @apply mt-16 max-w-md mx-auto bg-white rounded-lg border border-gray-200 shadow-md;
+}
+
+.counter_div {
+  @apply mt-16 max-w-sm mx-auto bg-white rounded-lg border border-gray-200 shadow-md;
 }

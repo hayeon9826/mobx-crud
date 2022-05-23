@@ -14,7 +14,8 @@ const Navbar: React.FC = () => {
   const navigation = [
     { name: '게시판', href: '/', current: location.pathname === '/' },
     { name: 'To-do 리스트', href: '/todos', current: location.pathname === '/todos' },
-    { name: '카운터', href: '/counters', current: location.pathname === '/counters' }
+    { name: '카운터', href: '/counters', current: location.pathname === '/counters' },
+    { name: '404', href: '/404', current: location.pathname === '/404' }
   ];
 
   const handleAlert = () => {

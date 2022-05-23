@@ -52,16 +52,14 @@ const PostNew: React.FC = () => {
     <Observer>
       {() => {
         return (
-          <div className="min-h-[80vh] bg-slate-50">
-            <div className="pt-14 relative pl-2.5 pr-2.5 max-w-screen-xl mx-auto mt-0 mb-0">
-              <div className="flex justify-between">
-                <h2 className="lg:text-xl md:text-xl xl:text-xl text-md font-semibold">
-                  후기 작성
-                </h2>
+          <div className="screen_md">
+            <div className="screen_padding">
+              <div className="flex_div">
+                <h2 className="page_title">후기 작성</h2>
               </div>
               <div className="mt-16">
-                <div className="w-100 bg-white p-5 m-auto sm:w-[580px] md:w-[580px] lg:w-[580px]">
-                  <div className="block m-auto w-100 sm:w-[480px] md:w-[480px] lg:w-[480px] px-5 py-2.5">
+                <div className="w-100 form_div">
+                  <div className="w-100 form_group">
                     <label className="block font-bold mb-1" htmlFor="label">
                       사용자
                     </label>
@@ -73,7 +71,7 @@ const PostNew: React.FC = () => {
                       onChange={handleChange('user')}
                     />
                   </div>
-                  <div className="block m-auto w-100 sm:w-[480px] md:w-[480px] lg:w-[480px] px-5 py-2.5">
+                  <div className="w-100 form_group">
                     <label className="block font-bold mb-1" htmlFor="label">
                       제목
                     </label>
@@ -84,7 +82,7 @@ const PostNew: React.FC = () => {
                       id="title-input"
                     />
                   </div>
-                  <div className="block m-auto w-100 sm:w-[480px] md:w-[480px] lg:w-[480px] px-5 py-2.5">
+                  <div className="w-100 form_group">
                     <label className="block font-bold mb-1">내용</label>
                     <textarea
                       className="w-full h-24 border-b border-b-slate-200"
@@ -94,9 +92,7 @@ const PostNew: React.FC = () => {
                     />
                   </div>
                   <div className="mt-10 text-center">
-                    <button
-                      className="w-100 text-sm sm:text-base md:text-base lg:text-base h-12 hover:bg-indigo-600 focus:ring-4 focus:ring-indigo-200 text-white border-indigo-500 bg-indigo-500 rounded cursor-pointer w-40"
-                      onClick={() => handleSubmit()}>
+                    <button className="w-100 submit_btn" onClick={() => handleSubmit()}>
                       작성하기
                     </button>
                   </div>

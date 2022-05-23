@@ -52,14 +52,12 @@ const TodoPage = () => {
       {() => {
         return (
           <>
-            <div className="min-h-screen bg-slate-50 pb-32">
-              <div className="pt-14 relative pl-2.5 pr-2.5 max-w-screen-xl mx-auto mt-0 mb-0">
-                <div className="flex justify-between">
-                  <h2 className="lg:text-xl md:text-xl xl:text-xl text-md font-semibold">
-                    Todo 리스트
-                  </h2>
+            <div className="screen_bg">
+              <div className="screen_padding">
+                <div className="flex_div">
+                  <h2 className="page_title">Todo 리스트</h2>
                 </div>
-                <div className="mt-16 max-w-md mx-auto bg-white rounded-lg border border-gray-200 shadow-md">
+                <div className="todo_div">
                   <div className="p-6">
                     <h1 className="text-grey-darkest font-semibold text-xl">
                       {dayjs().format('YYYY년 MM월 DD일')}
@@ -74,15 +72,13 @@ const TodoPage = () => {
                           onChange={(e) => {
                             setTitle(e.target.value);
                           }}
-                          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-2 p-2.5 "
+                          className="todo_form_input"
                           placeholder="30자 이내로 입력"
                           required
                           maxLength={30}
                         />
                       </div>
-                      <button
-                        onClick={() => onClickAdd()}
-                        className="inline-flex items-center py-2.5 px-3 ml-2 text-sm font-medium text-white bg-indigo-500 rounded-lg border border-indigo-500 hover:bg-indigo-700 focus:ring-4 focus:outline-none focus:ring-indigo-300 ">
+                      <button onClick={() => onClickAdd()} className="todo_add_btn">
                         Add
                       </button>
                     </div>
@@ -106,13 +102,13 @@ const TodoPage = () => {
                           </p>
                           <button
                             onClick={() => onClickRemove(todo.id!!)}
-                            className="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
+                            className="todo_remove_btn">
                             Remove
                           </button>
                         </div>
                       ))
                     ) : (
-                      <div className="text-gray-500 text-xs m-auto">오늘의 할일이 없습니다.</div>
+                      <div className="no_content">오늘의 할일이 없습니다.</div>
                     )}
                   </div>
                 </div>

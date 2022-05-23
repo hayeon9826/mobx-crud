@@ -42,22 +42,18 @@ const PostShow: React.FC = () => {
     }
   };
   return (
-    <div className="min-h-[80vh] bg-slate-50">
-      <div className="pt-14 pb-14 relative pl-2.5 pr-2.5 max-w-screen-xl mx-auto mt-0 mb-0">
-        <div className="flex justify-between">
-          <h2 className="lg:text-xl md:text-xl xl:text-xl text-md font-semibold">후기 상세</h2>
+    <div className="screen_md">
+      <div className="pb-14 screen_padding">
+        <div className="flex_div">
+          <h2 className="page_title">후기 상세</h2>
         </div>
         <div className="mt-16">
-          <div className="w-100 h-full cursor-pointer bg-white rounded-lg relative flex p-6 items-start flex-col sm:w-[580px] md:w-[580px] lg:w-[580px] min-h-[400px] shadow-md m-auto">
+          <div className="w-100 post_show_box">
             {post ? (
               <>
-                <div className="flex justify-between">
-                  <div className="post-user text-lg sm:text-xl md:text-xl lg:text-xl font-bold">
-                    {post?.user}
-                  </div>
-                  <span className="text-gray-600 text-sm ml-2 leading-5 font-normal">
-                    {post?.date}
-                  </span>
+                <div className="flex_div">
+                  <div className="post-user user_text">{post?.user}</div>
+                  <span className="date_text font-normal">{post?.date}</span>
                   <div className="absolute items-center flex text-gray-500 text-xs right-5 top-5">
                     <Link to={`/posts/edit/${post?.id}`} id="post-edit-btn">
                       <u>수정</u>
@@ -74,9 +70,7 @@ const PostShow: React.FC = () => {
               </>
             ) : (
               <>
-                <div className="text-gray-600 text-xs m-auto">
-                  후기가 없습니다. 다시 시도해주세요.
-                </div>
+                <div className="no_content">후기가 없습니다. 다시 시도해주세요.</div>
               </>
             )}
           </div>

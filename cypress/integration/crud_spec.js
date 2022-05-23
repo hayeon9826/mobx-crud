@@ -83,7 +83,7 @@ context('React CRUD', () => {
     cy.get('#title-input').type(`[수정] ${title}{enter}`);
     cy.get('#body-input').clear();
     cy.get('#body-input').type(`[수정] ${body}{enter}`);
-    cy.get('button').click();
+    cy.get('button').last().click();
     cy.wait(500);
     cy.visit(url);
     cy.wait(500);

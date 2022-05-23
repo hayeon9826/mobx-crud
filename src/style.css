@@ -92,6 +92,14 @@
   @apply h-full cursor-pointer bg-white rounded-lg relative flex p-6 items-start flex-col sm:w-[580px] md:w-[580px] lg:w-[580px] min-h-[400px] shadow-md m-auto;
 }
 
+.post_input {
+  @apply w-full h-12 border-b border-b-slate-200;
+}
+
+.post_textarea {
+  @apply w-full h-24 border-b border-b-slate-200;
+}
+
 .user_text {
   @apply text-lg sm:text-xl md:text-xl lg:text-xl font-bold;
 }

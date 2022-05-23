@@ -53,7 +53,7 @@ const PostShow: React.FC = () => {
               <>
                 <div className="flex_div">
                   <div className="post-user user_text">{post?.user}</div>
-                  <span className="date_text font-normal">{post?.date}</span>
+                  <span className="date_text font-normal post-date">{post?.date}</span>
                   <div className="absolute items-center flex text-gray-500 text-xs right-5 top-5">
                     <Link to={`/posts/edit/${post?.id}`} id="post-edit-btn">
                       <u>수정</u>
@@ -64,8 +64,8 @@ const PostShow: React.FC = () => {
                     </u>
                   </div>
                 </div>
-                <div className="text-gray-600 mt-2">{post?.title}</div>
-                <div className="mt-4 overflow-hidden pb-5 leading-7">{post?.body}</div>
+                <div className="text-gray-600 mt-2 post-title">{post?.title}</div>
+                <div className="mt-4 overflow-hidden pb-5 leading-7 post-body">{post?.body}</div>
                 <></>
               </>
             ) : (

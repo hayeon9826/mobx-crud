@@ -64,7 +64,7 @@ const PostNew: React.FC = () => {
                       사용자
                     </label>
                     <input
-                      className="w-full h-12 border-b border-b-slate-200"
+                      className="post_input"
                       placeholder="사용자 이름을 입력해 주세요"
                       ref={inputRef}
                       id="user-input"
@@ -76,7 +76,7 @@ const PostNew: React.FC = () => {
                       제목
                     </label>
                     <input
-                      className="w-full h-12 border-b border-b-slate-200"
+                      className="post_input"
                       placeholder="제목을 입력해 주세요"
                       onChange={handleChange('title')}
                       id="title-input"
@@ -85,7 +85,7 @@ const PostNew: React.FC = () => {
                   <div className="w-100 form_group">
                     <label className="block font-bold mb-1">내용</label>
                     <textarea
-                      className="w-full h-24 border-b border-b-slate-200"
+                      className="post_textarea"
                       placeholder="내용을 입력해 주세요"
                       id="body-input"
                       onChange={handleChange('body')}

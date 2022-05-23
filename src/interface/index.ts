@@ -41,11 +41,6 @@ export interface buttonProps {
 export interface PostStoreType {
   posts: Post[];
   error: string | unknown;
-  id: number;
-  title: string;
-  body: string;
-  user: string;
-  date: string;
   getPosts(): void;
   addPost(title: string, body: string, user: string, date: string): void;
   removePost(id: number): void;
@@ -55,9 +50,6 @@ export interface PostStoreType {
 
 export interface TodoStoreType {
   todos: Todo[];
-  id: number;
-  title: string;
-  finished: boolean;
   error: string | unknown;
   getTodos(): void;
   addTodo(title: string): void;

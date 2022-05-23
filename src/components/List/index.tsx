@@ -4,14 +4,22 @@ import { Observer } from 'mobx-react';
 import { Link } from 'react-router-dom';
 import { Post } from '../../interface';
 import { useStores } from '../../store/rootContext';
+import { toast } from 'react-toastify';
 
 const List: React.FC = () => {
   const { postStore } = useStores();
+  const { error } = postStore;
 
   useEffect(() => {
     // page mount시 mobX 데이터 fetching
     postStore.getPosts();
   }, []);
+
+  useEffect(() => {
+    toast.warning(error, {
+      autoClose: 1000
+    });
+  }, [error]);
 
   return (
     <Observer>

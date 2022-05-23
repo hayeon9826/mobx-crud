@@ -13,6 +13,7 @@ const PostNew: React.FC = () => {
     date: dayjs().format('YYYY-MM-DD')
   });
   const { postStore } = useStores();
+  const { error } = postStore;
   const inputRef = useRef() as React.MutableRefObject<HTMLInputElement>;
   const navigate = useNavigate();
 
@@ -36,6 +37,9 @@ const PostNew: React.FC = () => {
       }
     } catch (e) {
       console.log(e);
+      toast.warning(error, {
+        autoClose: 1000
+      });
       navigate('/', { replace: true });
     }
   };

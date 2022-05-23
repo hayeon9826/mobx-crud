@@ -4,7 +4,7 @@ import { NumberStoreType } from 'src/interface';
 export class NumberStore implements NumberStoreType {
   rootStore;
   num = 0;
-  error: string | unknown = '';
+  error: string | null = null;
 
   constructor(root: any) {
     makeObservable(this, {
@@ -15,7 +15,7 @@ export class NumberStore implements NumberStoreType {
     });
     this.rootStore = root;
     this.num = this.num;
-    this.error = '';
+    this.error = null;
   }
 
   increaseAction(num: number) {

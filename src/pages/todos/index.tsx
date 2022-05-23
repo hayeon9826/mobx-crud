@@ -8,6 +8,7 @@ import dayjs from 'dayjs';
 const TodoPage = () => {
   const [title, setTitle] = useState('');
   const { todoStore } = useStores();
+  const { error } = todoStore;
 
   const onClickAdd = () => {
     try {
@@ -46,6 +47,12 @@ const TodoPage = () => {
   useEffect(() => {
     todoStore.getTodos();
   }, []);
+
+  useEffect(() => {
+    toast.warning(error, {
+      autoClose: 1000
+    });
+  }, [error]);
 
   return (
     <Observer>

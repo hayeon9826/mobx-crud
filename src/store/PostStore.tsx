@@ -8,21 +8,11 @@ import { AxiosResponse } from 'axios';
 export class PostStore implements PostStoreType {
   rootStore;
   posts: Post[] = [];
-  id = 0;
-  title = '';
-  body = '';
-  user = '';
-  date = dayjs().format('YYYY-MM-DD');
-  error: string | unknown = '';
+  error: string | null = null;
 
   constructor(root: any) {
     makeObservable(this, {
       posts: observable,
-      id: observable,
-      title: observable,
-      body: observable,
-      user: observable,
-      date: observable,
       error: observable,
       getPosts: flow,
       addPost: flow,
@@ -32,12 +22,7 @@ export class PostStore implements PostStoreType {
     });
     this.rootStore = root;
     this.posts = [];
-    this.id = 0;
-    this.title = '';
-    this.body = '';
-    this.user = '';
-    this.date = dayjs().format('YYYY-MM-DD');
-    this.error = '';
+    this.error = null;
   }
 
   *getPosts() {

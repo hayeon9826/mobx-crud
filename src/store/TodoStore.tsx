@@ -6,18 +6,12 @@ import { AxiosResponse } from 'axios';
 export class TodoStore implements TodoStoreType {
   rootStore;
   todos: Todo[] = [];
-  finished: boolean = false;
-  id: number = 0;
-  title: string = '';
-  error: string | unknown = '';
+  error: string | null = null;
 
   constructor(root: any) {
     makeObservable(this, {
-      id: observable,
       todos: observable,
-      finished: observable,
       error: observable,
-      title: observable,
       addTodo: flow,
       removeTodo: flow,
       toggle: flow,
@@ -27,7 +21,7 @@ export class TodoStore implements TodoStoreType {
     this.rootStore = root;
     this.todos = [];
     this.title = '';
-    this.error = '';
+    this.error = null;
     this.id = 0;
     this.finished = false;
   }

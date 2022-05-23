@@ -10,6 +10,7 @@ const PostShow: React.FC = () => {
   const params = useParams();
   const navigate = useNavigate();
   const { postStore } = useStores();
+  const { error } = postStore;
 
   const [post, setPost] = useState({
     id: 0,
@@ -38,9 +39,13 @@ const PostShow: React.FC = () => {
       post && post.id !== 0 && (await postStore.removePost(post.id!!));
       navigate('/', { replace: true });
     } catch (e) {
+      toast.warning(error, {
+        autoClose: 1000
+      });
       navigate('/', { replace: true });
     }
   };
+
   return (
     <div className="screen_md">
       <div className="pb-14 screen_padding">

@@ -1,8 +1,11 @@
+import { useEffect } from 'react';
 import { Observer } from 'mobx-react';
 import { useStores } from '../../store/rootContext';
+import { toast } from 'react-toastify';
 
 const CounterPage = () => {
   const { numberStore } = useStores();
+  const { error } = numberStore;
 
   const onClickIncrease = () => {
     numberStore.increaseAction(1);
@@ -11,6 +14,12 @@ const CounterPage = () => {
   const onClickDecrease = () => {
     numberStore.decreaseAction(1);
   };
+
+  useEffect(() => {
+    toast.warning(error, {
+      autoClose: 1000
+    });
+  }, [error]);
 
   return (
     <Observer>

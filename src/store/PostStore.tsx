@@ -14,10 +14,12 @@ export class PostStore implements PostStoreType {
     makeObservable(this, {
       posts: observable,
       error: observable,
+      // 모든 프로토타입 내 제너레이터 함수(generator function)는 flow로 지정
       getPosts: flow,
       addPost: flow,
       removePost: flow,
       updatePost: flow,
+      // 모든 setter는 action으로 지정
       updateError: action
     });
     this.rootStore = root;

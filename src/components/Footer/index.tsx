@@ -13,26 +13,25 @@ const Footer: React.FC = () => {
         </div>
         <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
           <div>
-            <h2 className="mb-6 text-xs font-semibold text-gray-900 uppercase ">
-              Resources
-            </h2>
+            <h2 className="mb-6 text-xs font-semibold text-gray-900 uppercase ">Resources</h2>
             <ul className="text-gray-600">
               <li className="mb-4">
-                <a href="https://finda.co.kr/" className="hover:underline text-sm">
+                <a href="https://finda.co.kr/" className="hover:underline text-sm" target="_blank">
                   Finda
                 </a>
               </li>
               <li>
-                <a href="https://tailwindcss.com/" className="hover:underline text-sm">
+                <a
+                  href="https://tailwindcss.com/"
+                  className="hover:underline text-sm"
+                  target="_blank">
                   Tailwind CSS
                 </a>
               </li>
             </ul>
           </div>
           <div>
-            <h2 className="mb-6 text-xs font-semibold text-gray-900 uppercase ">
-              Follow us
-            </h2>
+            <h2 className="mb-6 text-xs font-semibold text-gray-900 uppercase ">Follow us</h2>
             <ul className="text-gray-600 ">
               <li className="mb-4">
                 <a href="#" className="hover:underline text-sm ">
@@ -47,9 +46,7 @@ const Footer: React.FC = () => {
             </ul>
           </div>
           <div>
-            <h2 className="mb-6 text-xs font-semibold text-gray-900 uppercase ">
-              Legal
-            </h2>
+            <h2 className="mb-6 text-xs font-semibold text-gray-900 uppercase ">Legal</h2>
             <ul className="text-gray-600 ">
               <li className="mb-4">
                 <a href="#" className="hover:underline text-sm">

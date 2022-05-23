@@ -38,33 +38,33 @@
   ],
   "todo": [
     {
-      "finished": true,
+      "finished": false,
       "title": "MobX 공부하기",
       "id": 1
     },
     {
-      "finished": true,
+      "finished": false,
       "title": "postcss 공부하기",
       "id": 2
     },
     {
-      "finished": false,
+      "finished": true,
       "title": "tailwind css 공부하기",
       "id": 3
     },
     {
-      "finished": false,
+      "finished": true,
       "title": "프로젝트 구현",
       "id": 4
     },
     {
+      "finished": true,
       "title": "ReadME 작성",
-      "finished": false,
       "id": 5
     },
     {
-      "title": "발표자료 만들기",
       "finished": false,
+      "title": "발표자료 만들기",
       "id": 6
     }
   ]

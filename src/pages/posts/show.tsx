@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router';
 import { BASE_URL } from '../../../src/lib/api';
-import rootStore from '../../store/rootStore';
+import { useStores } from '../../store/rootContext';
 import axios from 'axios';
 
 const PostShow: React.FC = () => {
   // URL 인자들의 key/value(키/값) 짝들의 객체를 반환
   const params = useParams();
   const navigate = useNavigate();
-  const { postStore } = rootStore();
+  const { postStore } = useStores();
 
   const [post, setPost] = useState({
     id: 0,

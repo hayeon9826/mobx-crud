@@ -1,8 +1,8 @@
 import { Observer } from 'mobx-react';
-import rootStore from '../../store/rootStore';
+import { useStores } from '../../store/rootContext';
 
 const CounterPage = () => {
-  const { numberStore } = rootStore();
+  const { numberStore } = useStores();
 
   const onClickIncrease = () => {
     numberStore.increaseAction(1);

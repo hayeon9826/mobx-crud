@@ -2,12 +2,12 @@ import { useState, useEffect } from 'react';
 import { Observer } from 'mobx-react';
 import { Todo } from 'src/interface';
 import { toast } from 'react-toastify';
-import rootStore from '../../store/rootStore';
+import { useStores } from '../../store/rootContext';
 import dayjs from 'dayjs';
 
 const TodoPage = () => {
   const [title, setTitle] = useState('');
-  const { todoStore } = rootStore();
+  const { todoStore } = useStores();
 
   const onClickAdd = () => {
     try {

@@ -1,4 +1,4 @@
-import { observable, runInAction } from 'mobx';
+import { observable, runInAction, action } from 'mobx';
 import { Post, PostStoreType } from 'src/interface';
 import * as API from '../lib/api';
 import dayjs from 'dayjs';

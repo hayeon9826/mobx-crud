@@ -3,10 +3,10 @@ import Button from '../Button';
 import { Observer } from 'mobx-react';
 import { Link } from 'react-router-dom';
 import { Post } from '../../interface';
-import rootStore from '../../store/rootStore';
+import { useStores } from '../../store/rootContext';
 
 const List: React.FC = () => {
-  const { postStore } = rootStore();
+  const { postStore } = useStores();
 
   useEffect(() => {
     // page mount시 mobX 데이터 fetching

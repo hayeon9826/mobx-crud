@@ -3,7 +3,7 @@ import { Observer } from 'mobx-react';
 import { useNavigate } from 'react-router-dom';
 import dayjs from 'dayjs';
 import { toast } from 'react-toastify';
-import rootStore from '../../store/rootStore';
+import { useStores } from '../../store/rootContext';
 
 const PostNew: React.FC = () => {
   const [form, setForm] = useState({
@@ -12,7 +12,7 @@ const PostNew: React.FC = () => {
     user: '',
     date: dayjs().format('YYYY-MM-DD')
   });
-  const { postStore } = rootStore();
+  const { postStore } = useStores();
   const inputRef = useRef() as React.MutableRefObject<HTMLInputElement>;
   const navigate = useNavigate();
 

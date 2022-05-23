@@ -4,7 +4,7 @@ import dayjs from 'dayjs';
 import { useNavigate } from 'react-router-dom';
 import { BASE_URL } from '../../../src/lib/api';
 import { toast } from 'react-toastify';
-import rootStore from '../../store/rootStore';
+import { useStores } from '../../store/rootContext';
 import axios from 'axios';
 
 const PostEdit: React.FC = () => {
@@ -24,7 +24,7 @@ const PostEdit: React.FC = () => {
     date: ''
   });
   const params = useParams();
-  const { postStore } = rootStore();
+  const { postStore } = useStores();
   const inputRef = useRef() as React.MutableRefObject<HTMLInputElement>;
   const navigate = useNavigate();
 

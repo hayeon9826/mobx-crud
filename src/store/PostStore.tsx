@@ -1,4 +1,4 @@
-import { makeObservable, observable, action, flow } from 'mobx';
+import { makeObservable, observable, flow, action } from 'mobx';
 import { Post, PostStoreType } from 'src/interface';
 import * as API from '../lib/api';
 import dayjs from 'dayjs';
@@ -27,7 +27,8 @@ export class PostStore implements PostStoreType {
       getPosts: flow,
       addPost: flow,
       removePost: flow,
-      updatePost: flow
+      updatePost: flow,
+      updateError: action
     });
     this.rootStore = root;
     this.posts = [];
@@ -36,6 +37,7 @@ export class PostStore implements PostStoreType {
     this.body = '';
     this.user = '';
     this.date = dayjs().format('YYYY-MM-DD');
+    this.error = '';
   }
 
   *getPosts() {
@@ -45,6 +47,7 @@ export class PostStore implements PostStoreType {
       this.posts = post;
     } catch (e) {
       console.log(e);
+      this.updateError({ error: '후기 리스트를 가져올 수 없습니다. 다시 시도해주세요.' });
     }
   }
 
@@ -57,7 +60,7 @@ export class PostStore implements PostStoreType {
       this.getPosts();
     } catch (e) {
       console.log(e);
-      this.error = e;
+      this.updateError({ error: '후기를 생성할 수 없습니다. 다시 시도해주세요.' });
     }
   }
 
@@ -70,7 +73,7 @@ export class PostStore implements PostStoreType {
       this.getPosts();
     } catch (e) {
       console.log(e);
-      this.error = e;
+      this.updateError({ error: '후기를 삭제할 수 없습니다. 다시 시도해주세요.' });
     }
   }
 
@@ -83,7 +86,11 @@ export class PostStore implements PostStoreType {
       this.getPosts();
     } catch (e) {
       console.log(e);
-      this.error = e;
+      this.updateError({ error: '후기를 수정할 수 없습니다. 다시 시도해주세요.' });
     }
+  }
+
+  updateError({ error }: { error: string }) {
+    this.error = error;
   }
 }

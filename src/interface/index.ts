@@ -50,6 +50,7 @@ export interface PostStoreType {
   addPost(title: string, body: string, user: string, date: string): void;
   removePost(id: number): void;
   updatePost(id: number, post: Post): void;
+  updateError({ error }: any): void;
 }
 
 export interface TodoStoreType {
@@ -62,12 +63,14 @@ export interface TodoStoreType {
   addTodo(title: string): void;
   removeTodo(id: number): void;
   toggle(id: number): void;
+  updateError({ error }: any): void;
 }
 
 export interface NumberStoreType {
   num: number;
   increaseAction(num: number): void;
   decreaseAction(num: number): void;
+  updateError({ error }: any): void;
 }
 
 export interface RootStoreType {

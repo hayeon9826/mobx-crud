@@ -21,7 +21,8 @@ export class TodoStore implements TodoStoreType {
       addTodo: flow,
       removeTodo: flow,
       toggle: flow,
-      getTodos: flow
+      getTodos: flow,
+      updateError: action
     });
     this.rootStore = root;
     this.todos = [];
@@ -38,6 +39,7 @@ export class TodoStore implements TodoStoreType {
       this.todos = todo;
     } catch (e) {
       console.log(e);
+      this.updateError({ error: '할일 목록을 가져올 수 없습니다. 다시 시도해주세요.' });
     }
   }
 
@@ -47,7 +49,7 @@ export class TodoStore implements TodoStoreType {
       this.getTodos();
     } catch (e) {
       console.log(e);
-      this.error = e;
+      this.updateError({ error: '할일을 생성할 수 없습니다. 다시 시도해주세요.' });
     }
   }
 
@@ -57,7 +59,7 @@ export class TodoStore implements TodoStoreType {
       this.getTodos();
     } catch (e) {
       console.log(e);
-      this.error = e;
+      this.updateError({ error: '할일을 삭제할 수 없습니다. 다시 시도해주세요.' });
     }
   }
 
@@ -74,12 +76,16 @@ export class TodoStore implements TodoStoreType {
             this.getTodos();
           } catch (e) {
             console.log(e);
-            this.error = e;
+            this.updateError({ error: '상태를 수정할 수 없습니다. 다시 시도해주세요.' });
           }
         };
         toggleAsync();
       }
       return todo;
     });
+  }
+
+  updateError({ error }: { error: string }) {
+    this.error = error;
   }
 }

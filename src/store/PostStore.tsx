@@ -39,9 +39,6 @@ export class PostStore implements PostStoreType {
   *addPost(title: string, body: string, user: string, date: string) {
     try {
       yield API.createPost({ title: title, body: body, user: user, date: date });
-      toast.success('후기를 작성했습니다.', {
-        autoClose: 1000
-      });
       this.getPosts();
     } catch (e) {
       console.log(e);
@@ -52,9 +49,6 @@ export class PostStore implements PostStoreType {
   *removePost(id: number) {
     try {
       yield API.deletePost(id);
-      toast.success('후기를 삭제했습니다.', {
-        autoClose: 1000
-      });
       this.getPosts();
     } catch (e) {
       console.log(e);
@@ -65,9 +59,6 @@ export class PostStore implements PostStoreType {
   *updatePost(id: number, post: Post) {
     try {
       yield API.updatePost({ id: id, post: post });
-      toast.success('후기를 수정했습니다.', {
-        autoClose: 1000
-      });
       this.getPosts();
     } catch (e) {
       console.log(e);

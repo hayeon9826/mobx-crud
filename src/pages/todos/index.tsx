@@ -10,15 +10,15 @@ const TodoPage = () => {
   const { todoStore } = useStores();
   const { error } = todoStore;
 
-  const onClickAdd = () => {
+  const onClickAdd = async () => {
     try {
-      todoStore.addTodo(title);
+      await todoStore.addTodo(title);
       setTitle('');
       toast.success('할일을 추가했습니다.', {
         autoClose: 1000
       });
     } catch (e) {
-      console.log(e);
+      console.log(e, '@@@e');
     }
   };
 
@@ -47,12 +47,6 @@ const TodoPage = () => {
   useEffect(() => {
     todoStore.getTodos();
   }, []);
-
-  useEffect(() => {
-    toast.warning(error, {
-      autoClose: 1000
-    });
-  }, [error]);
 
   return (
     <Observer>

@@ -69,18 +69,17 @@ const PostEdit: React.FC = () => {
           user: form.user,
           date: dayjs().format('YYYY-MM-DD')
         });
+        toast.success('후기를 수정했습니다.', {
+          autoClose: 1000
+        });
         navigate(`/posts/${post?.id}`, { replace: true });
       } else {
-        // form validation
         await toast.warning('모든 필드를 채워주세요.', {
           autoClose: 1000
         });
       }
     } catch (e) {
       console.log(e);
-      toast.warning(error, {
-        autoClose: 1000
-      });
       navigate('/', { replace: true });
     }
   };

@@ -4,6 +4,7 @@ import { useParams } from 'react-router';
 import { BASE_URL } from '../../../src/lib/api';
 import { useStores } from '../../store/rootContext';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const PostShow: React.FC = () => {
   // URL 인자들의 key/value(키/값) 짝들의 객체를 반환
@@ -37,11 +38,12 @@ const PostShow: React.FC = () => {
   const handleDelete = async () => {
     try {
       post && post.id !== 0 && (await postStore.removePost(post.id!!));
-      navigate('/', { replace: true });
-    } catch (e) {
-      toast.warning(error, {
+      toast.success('후기를 삭제했습니다.', {
         autoClose: 1000
       });
+      navigate('/', { replace: true });
+    } catch (e) {
+      console.log(e);
       navigate('/', { replace: true });
     }
   };

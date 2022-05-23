@@ -15,12 +15,6 @@ const List: React.FC = () => {
     postStore.getPosts();
   }, []);
 
-  useEffect(() => {
-    toast.warning(error, {
-      autoClose: 1000
-    });
-  }, [error]);
-
   return (
     <Observer>
       {() => {

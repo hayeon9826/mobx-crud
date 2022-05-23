@@ -15,12 +15,6 @@ const CounterPage = () => {
     numberStore.decreaseAction(1);
   };
 
-  useEffect(() => {
-    toast.warning(error, {
-      autoClose: 1000
-    });
-  }, [error]);
-
   return (
     <Observer>
       {() => {

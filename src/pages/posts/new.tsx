@@ -27,7 +27,10 @@ const PostNew: React.FC = () => {
     try {
       // form validation
       if (form.user && form.title && form.body) {
-        postStore.addPost(form.title, form.body, form.user, form.date);
+        const { response } = postStore.addPost(form.title, form.body, form.user, form.date);
+        toast.success('후기를 작성했습니다.', {
+          autoClose: 1000
+        });
         navigate('/', { replace: true });
       } else {
         // form validation
@@ -37,9 +40,6 @@ const PostNew: React.FC = () => {
       }
     } catch (e) {
       console.log(e);
-      toast.warning(error, {
-        autoClose: 1000
-      });
       navigate('/', { replace: true });
     }
   };

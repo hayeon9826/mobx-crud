@@ -54,58 +54,56 @@ const PostNew: React.FC = () => {
 
   return (
     <Observer>
-      {() => {
-        return (
-          <div className="screen_md">
-            <div className="screen_padding">
-              <div className="flex_div">
-                <h2 className="page_title">후기 작성</h2>
-              </div>
-              <div className="mt-16">
-                <div className="w-100 form_div">
-                  <div className="w-100 form_group">
-                    <label className="block font-bold mb-1" htmlFor="label">
-                      사용자
-                    </label>
-                    <input
-                      className="post_input"
-                      placeholder="사용자 이름을 입력해 주세요"
-                      ref={inputRef}
-                      id="user-input"
-                      onChange={handleChange('user')}
-                    />
-                  </div>
-                  <div className="w-100 form_group">
-                    <label className="block font-bold mb-1" htmlFor="label">
-                      제목
-                    </label>
-                    <input
-                      className="post_input"
-                      placeholder="제목을 입력해 주세요"
-                      onChange={handleChange('title')}
-                      id="title-input"
-                    />
-                  </div>
-                  <div className="w-100 form_group">
-                    <label className="block font-bold mb-1">내용</label>
-                    <textarea
-                      className="post_textarea"
-                      placeholder="내용을 입력해 주세요"
-                      id="body-input"
-                      onChange={handleChange('body')}
-                    />
-                  </div>
-                  <div className="mt-10 text-center">
-                    <button className="w-100 submit_btn" onClick={() => handleSubmit()}>
-                      작성하기
-                    </button>
-                  </div>
+      {() => (
+        <div className="screen_md">
+          <div className="screen_padding">
+            <div className="flex_div">
+              <h2 className="page_title">후기 작성</h2>
+            </div>
+            <div className="mt-16">
+              <div className="w-100 form_div">
+                <div className="w-100 form_group">
+                  <label className="block font-bold mb-1" htmlFor="label">
+                    사용자
+                  </label>
+                  <input
+                    className="post_input"
+                    placeholder="사용자 이름을 입력해 주세요"
+                    ref={inputRef}
+                    id="user-input"
+                    onChange={handleChange('user')}
+                  />
+                </div>
+                <div className="w-100 form_group">
+                  <label className="block font-bold mb-1" htmlFor="label">
+                    제목
+                  </label>
+                  <input
+                    className="post_input"
+                    placeholder="제목을 입력해 주세요"
+                    onChange={handleChange('title')}
+                    id="title-input"
+                  />
+                </div>
+                <div className="w-100 form_group">
+                  <label className="block font-bold mb-1">내용</label>
+                  <textarea
+                    className="post_textarea"
+                    placeholder="내용을 입력해 주세요"
+                    id="body-input"
+                    onChange={handleChange('body')}
+                  />
+                </div>
+                <div className="mt-10 text-center">
+                  <button className="w-100 submit_btn" onClick={() => handleSubmit()}>
+                    작성하기
+                  </button>
                 </div>
               </div>
             </div>
           </div>
-        );
-      }}
+        </div>
+      )}
     </Observer>
   );
 };

@@ -23,7 +23,6 @@ const PostShow: React.FC = () => {
 
   useEffect(() => {
     const fetch = async () => {
-      // rtk query 사용해서 가져오기로 변경 필요
       const res = await axios({
         url: `${BASE_URL}/post/${params.id}`
       });
@@ -44,7 +43,6 @@ const PostShow: React.FC = () => {
       navigate('/', { replace: true });
     } catch (e) {
       console.log(e);
-      navigate('/', { replace: true });
     }
   };
 

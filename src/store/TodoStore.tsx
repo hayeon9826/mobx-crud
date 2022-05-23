@@ -20,10 +20,7 @@ export class TodoStore implements TodoStoreType {
     });
     this.rootStore = root;
     this.todos = [];
-    this.title = '';
     this.error = null;
-    this.id = 0;
-    this.finished = false;
   }
 
   *getTodos() {

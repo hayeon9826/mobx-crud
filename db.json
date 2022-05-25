@@ -38,12 +38,12 @@
   ],
   "todo": [
     {
-      "finished": false,
+      "finished": true,
       "title": "MobX 공부하기",
       "id": 1
     },
     {
-      "finished": false,
+      "finished": true,
       "title": "postcss 공부하기",
       "id": 2
     },
@@ -63,7 +63,7 @@
       "id": 5
     },
     {
-      "finished": false,
+      "finished": true,
       "title": "피피티 작업",
       "id": 6
     }

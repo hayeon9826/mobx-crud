@@ -19,14 +19,16 @@
 
 ### 0) node_modules 설치
 
+- 프론트
+  클론 후, 아래 명령어 입력.
+
 ```
-yarn
+yarn install
 ```
 
 ### 1) 프로젝트 실행
 
-- 프론트
-  클론 후, 아래 명령어 입력. localhost:8080 접속
+- 아래 명령어 입력 후, localhost:8080 접속
 
 ```
 yarn install
